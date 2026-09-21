@@ -5,147 +5,100 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flores Amarillas Especiales 🌻</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <!-- Canvas para polvo de estrellas y pétalos dinámicos -->
-    <canvas id="particlesCanvas"></canvas>
+    <!-- Fondo de pétalos cayendo -->
+    <div class="falling-petals-container" id="petalsContainer"></div>
 
-    <!-- Botón de Audio Ambiente -->
-    <div class="audio-control" id="audioToggle" title="Activar/Desactivar Música">
-        <span id="audioIcon">🎵</span>
-    </div>
-    <audio id="bgMusic" loop preload="auto">
-        <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=acoustic-guitars-ambient-112158.mp3" type="audio/mpeg">
-    </audio>
+    <header class="header">
+        <h1>Para Mis AMores❤️</h1>
+        <p class="subtitle">Las amo!🌻✨</p>
+    </header>
 
-    <main class="card">
-        <header>
-            <div class="badge">Especial para ustedes ✨</div>
-            <h1 id="mainTitle">🌻 Para mis Amores 🌻</h1>
-            <p class="subtitle">Flores eternas que iluminan cada día con su sonrisa</p>
-        </header>
+    <!-- Ramo de Flores Orgánico Grande -->
+    <div class="bouquet-container">
+        <!-- Tallos y Hojas SVG -->
+        <svg class="stems-svg" viewBox="0 0 500 500" preserveAspectRatio="xMidYMid meet">
+            <g stroke="#388e3c" stroke-width="10" stroke-linecap="round" fill="none">
+                <path d="M 250 480 C 240 380, 150 280, 140 180" />
+                <path d="M 250 480 C 245 360, 205 240, 200 130" />
+                <path d="M 250 480 C 255 360, 295 240, 300 130" />
+                <path d="M 250 480 C 260 380, 350 280, 360 180" />
+            </g>
+            <g fill="#4caf50">
+                <path d="M 200 360 Q 130 340 150 310 Q 180 330 200 360" />
+                <path d="M 300 360 Q 370 340 350 310 Q 320 330 300 360" />
+                <path d="M 215 290 Q 160 260 180 240 Q 200 260 215 290" />
+                <path d="M 285 290 Q 340 260 320 240 Q 300 260 285 290" />
+            </g>
+            <!-- Maceta / Envoltorio inferior -->
+            <polygon points="200,430 300,430 280,490 220,490" fill="#fff59d" stroke="#fbc02d" stroke-width="3"/>
+            <circle cx="250" cy="450" r="12" fill="#ff4081" />
+        </svg>
 
-        <!-- Ramo de Flores SVG de Alta Definición con Filtros 3D -->
-        <div class="bouquet-wrapper">
-            <svg class="bouquet-svg" viewBox="0 0 500 650" preserveAspectRatio="xMidYMid meet">
-                <defs>
-                    <!-- Filtro de sombra realista para dar volumen -->
-                    <filter id="realShadow" x="-20%" y="-20%" width="140%" height="140%">
-                        <feDropShadow dx="0" dy="12" stdDeviation="8" flood-color="#3e2723" flood-opacity="0.25"/>
-                    </filter>
-                    <filter id="glowEffect" x="-30%" y="-30%" width="160%" height="160%">
-                        <feGaussianBlur stdDeviation="5" result="blur" />
-                        <feComposite in="SourceGraphic" in2="blur" operator="over" />
-                    </filter>
-
-                    <!-- Degradados Avanzados para Papel y Lazo -->
-                    <linearGradient id="kraftOuter" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stop-color="#e0d0c1"/>
-                        <stop offset="50%" stop-color="#bcaaa4"/>
-                        <stop offset="100%" stop-color="#8d6e63"/>
-                    </linearGradient>
-                    <linearGradient id="kraftInner" x1="0%" y1="0%" x2="0%" y2="100%">
-                        <stop offset="0%" stop-color="#6d4c41"/>
-                        <stop offset="100%" stop-color="#4e342e"/>
-                    </linearGradient>
-                    <linearGradient id="satinRibbon" x1="0%" y1="0%" x2="100%" y2="0%">
-                        <stop offset="0%" stop-color="#ff4081"/>
-                        <stop offset="50%" stop-color="#f50057"/>
-                        <stop offset="100%" stop-color="#c51162"/>
-                    </linearGradient>
-                    <linearGradient id="stemGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                        <stop offset="0%" stop-color="#2e7d32"/>
-                        <stop offset="50%" stop-color="#4caf50"/>
-                        <stop offset="100%" stop-color="#1b5e20"/>
-                    </linearGradient>
-                </defs>
-
-                <!-- Sombra proyectada del paquete -->
-                <ellipse cx="250" cy="610" rx="130" ry="18" fill="#3e2723" opacity="0.2" filter="url(#realShadow)"/>
-
-                <!-- Fondo del envoltorio de papel (Parte trasera oscura) -->
-                <polygon points="130,360 370,360 280,590 220,590" fill="url(#kraftInner)"/>
-
-                <!-- Tallos Principales con Curvatura Orgánica -->
-                <g stroke="url(#stemGrad)" stroke-width="10" stroke-linecap="round" fill="none" filter="url(#realShadow)">
-                    <path d="M 250 560 C 240 430, 140 310, 130 200" />
-                    <path d="M 250 560 C 245 420, 200 280, 195 150" />
-                    <path d="M 250 560 C 255 420, 300 280, 305 150" />
-                    <path d="M 250 560 C 260 430, 360 310, 370 200" />
-                </g>
-
-                <!-- Hojas Botánicas Realistas con Nervaduras -->
-                <g fill="#43a047" opacity="0.95" filter="url(#realShadow)">
-                    <path d="M 180 390 C 110 370, 130 310, 160 330 C 180 345, 185 375, 180 390 Z" />
-                    <path d="M 320 390 C 390 370, 370 310, 340 330 C 320 345, 315 375, 320 390 Z" />
-                    <path d="M 205 320 C 150 280, 170 240, 190 260 C 205 275, 210 305, 205 320 Z" />
-                    <path d="M 295 320 C 350 280, 330 240, 310 260 C 295 275, 290 305, 295 320 Z" />
-                </g>
-
-                <!-- Solapas del Envoltorio de Papel Kraft (Frontal) -->
-                <g filter="url(#realShadow)">
-                    <polygon points="100,340 250,590 180,590" fill="url(#kraftOuter)"/>
-                    <polygon points="400,340 250,590 320,590" fill="url(#kraftOuter)"/>
-                    <polygon points="130,340 250,570 370,340" fill="#d7ccc8" opacity="0.9"/>
-                </g>
-
-                <!-- Lazo de Raso Elegante -->
-                <g filter="url(#realShadow)">
-                    <path d="M 200 455 Q 250 475 300 455 Q 285 485 250 480 Q 215 485 200 455 Z" fill="url(#satinRibbon)" />
-                    <circle cx="250" cy="466" r="10" fill="#ad1457" />
-                    <path d="M 242 472 C 220 530, 190 560, 200 580 C 215 565, 235 520, 248 474 Z" fill="url(#satinRibbon)" />
-                    <path d="M 258 472 C 280 530, 310 560, 300 580 C 285 565, 265 520, 252 474 Z" fill="url(#satinRibbon)" />
-                </g>
-            </svg>
-
-            <!-- Capa de las 4 Flores con las Fotos Conservadas -->
-            <div class="flowers-overlay">
-                <!-- Flor 1 (Izquierda) -->
-                <div class="flower-node flower-1" title="Toca para ver foto">
-                    <div class="flower-petals-back"></div>
-                    <div class="flower-petals-front"></div>
-                    <div class="photo-center">
-                        <img id="img-1" src="./images/image1.jpg" alt="Amiga 1">
-                    </div>
+        <!-- Flores con Pétalos Orgánicos y Tus Fotos -->
+        <div class="flowers-layer">
+            <!-- Flor 1 -->
+            <div class="sunflower flower-1">
+                <div class="petals-wrapper">
+                    <span style="--i:1"></span><span style="--i:2"></span><span style="--i:3"></span>
+                    <span style="--i:4"></span><span style="--i:5"></span><span style="--i:6"></span>
+                    <span style="--i:7"></span><span style="--i:8"></span><span style="--i:9"></span>
+                    <span style="--i:10"></span><span style="--i:11"></span><span style="--i:12"></span>
+                    <span style="--i:13"></span><span style="--i:14"></span><span style="--i:15"></span>
+                    <span style="--i:16"></span>
                 </div>
-
-                <!-- Flor 2 (Centro-Izquierda) -->
-                <div class="flower-node flower-2" title="Toca para ver foto">
-                    <div class="flower-petals-back"></div>
-                    <div class="flower-petals-front"></div>
-                    <div class="photo-center">
-                        <img id="img-2" src="./images/image2.jpg" alt="Amiga 2">
-                    </div>
-                </div>
-
-                <!-- Flor 3 (Centro-Derecha) -->
-                <div class="flower-node flower-3" title="Toca para ver foto">
-                    <div class="flower-petals-back"></div>
-                    <div class="flower-petals-front"></div>
-                    <div class="photo-center">
-                        <img id="img-3" src="./images/image3.jpg" alt="Amiga 3">
-                    </div>
-                </div>
-
-                <!-- Flor 4 (Derecha) -->
-                <div class="flower-node flower-4" title="Toca para ver foto">
-                    <div class="flower-petals-back"></div>
-                    <div class="flower-petals-front"></div>
-                    <div class="photo-center">
-                        <img id="img-4" src="./images/image4.jpg" alt="Amiga 4">
-                    </div>
+                <div class="flower-center">
+                    <img src="./images/image1.jpg" alt="Foto 1">
                 </div>
             </div>
-        </div>
-    </main>
 
-    <!-- Modal Visor de Imagen en Alta Resolución -->
-    <div class="modal" id="imageModal">
-        <div class="modal-card">
-            <span class="close-modal" id="closeModal">&times;</span>
-            <img class="modal-content" id="modalImg" alt="Foto ampliada">
+            <!-- Flor 2 (La más alta) -->
+            <div class="sunflower flower-2">
+                <div class="petals-wrapper">
+                    <span style="--i:1"></span><span style="--i:2"></span><span style="--i:3"></span>
+                    <span style="--i:4"></span><span style="--i:5"></span><span style="--i:6"></span>
+                    <span style="--i:7"></span><span style="--i:8"></span><span style="--i:9"></span>
+                    <span style="--i:10"></span><span style="--i:11"></span><span style="--i:12"></span>
+                    <span style="--i:13"></span><span style="--i:14"></span><span style="--i:15"></span>
+                    <span style="--i:16"></span>
+                </div>
+                <div class="flower-center">
+                    <img src="./images/image2.jpg" alt="Foto 2">
+                </div>
+            </div>
+
+            <!-- Flor 3 -->
+            <div class="sunflower flower-3">
+                <div class="petals-wrapper">
+                    <span style="--i:1"></span><span style="--i:2"></span><span style="--i:3"></span>
+                    <span style="--i:4"></span><span style="--i:5"></span><span style="--i:6"></span>
+                    <span style="--i:7"></span><span style="--i:8"></span><span style="--i:9"></span>
+                    <span style="--i:10"></span><span style="--i:11"></span><span style="--i:12"></span>
+                    <span style="--i:13"></span><span style="--i:14"></span><span style="--i:15"></span>
+                    <span style="--i:16"></span>
+                </div>
+                <div class="flower-center">
+                    <img src="./images/image3.jpg" alt="Foto 3">
+                </div>
+            </div>
+
+            <!-- Flor 4 -->
+            <div class="sunflower flower-4">
+                <div class="petals-wrapper">
+                    <span style="--i:1"></span><span style="--i:2"></span><span style="--i:3"></span>
+                    <span style="--i:4"></span><span style="--i:5"></span><span style="--i:6"></span>
+                    <span style="--i:7"></span><span style="--i:8"></span><span style="--i:9"></span>
+                    <span style="--i:10"></span><span style="--i:11"></span><span style="--i:12"></span>
+                    <span style="--i:13"></span><span style="--i:14"></span><span style="--i:15"></span>
+                    <span style="--i:16"></span>
+                </div>
+                <div class="flower-center">
+                    <img src="./images/image4.jpg" alt="Foto 4">
+                </div>
+            </div>
         </div>
     </div>
 
