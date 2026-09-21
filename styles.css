@@ -58,10 +58,10 @@ body {
     background: rgba(255, 255, 255, 0.88);
     backdrop-filter: blur(10px);
     border-radius: 24px;
-    padding: 30px 20px;
+    padding: 25px 20px;
     box-shadow: 0 15px 35px rgba(251, 192, 45, 0.25), 0 5px 15px rgba(0,0,0,0.05);
     width: 100%;
-    max-width: 520px;
+    max-width: 500px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -121,7 +121,7 @@ h1 {
     align-items: center;
     pointer-events: auto;
     cursor: pointer;
-    /* Animación de viento continua y fluida por sí sola */
+    /* Animación de viento continua */
     animation: naturalWind 5s ease-in-out infinite alternate;
     transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
@@ -131,13 +131,13 @@ h1 {
     z-index: 20 !important;
 }
 
-/* Ubicación de las 4 Flores */
+/* Ubicación de las 4 Flores en Pantallas Grandes */
 .flower-1 { top: 110px; left: 10px;  animation-delay: 0s; }
 .flower-2 { top: 35px;  left: 95px;  animation-delay: 0.8s; }
 .flower-3 { top: 35px;  right: 95px; animation-delay: 1.6s; }
 .flower-4 { top: 110px; right: 10px;  animation-delay: 2.4s; }
 
-/* DISEÑO DE PÉTALOS REALISTAS DE FLOR/GIRASOL */
+/* DISEÑO DE PÉTALOS REALISTAS DE GIRASOL */
 .flower-petals {
     position: absolute;
     width: 100%;
@@ -194,7 +194,7 @@ h1 {
     }
 }
 
-/* Modal imagen ampliada */
+/* Modal para foto ampliada */
 .modal {
     display: none;
     position: fixed;
@@ -223,4 +223,54 @@ h1 {
     font-size: 40px;
     font-weight: bold;
     cursor: pointer;
+}
+
+/* =========================================================
+   REGLAS RESPONSIVE PARA DISPOSITIVOS MÓVILES (TELÉFONOS)
+   ========================================================= */
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    .card {
+        padding: 20px 12px;
+        border-radius: 20px;
+    }
+
+    h1 {
+        font-size: 2.2rem;
+    }
+
+    .subtitle {
+        font-size: 0.85rem;
+    }
+
+    .bouquet-wrapper {
+        height: 420px;
+    }
+
+    /* Ajuste de tamaño de flores para pantallas pequeñas */
+    .flower-node {
+        width: 110px;
+        height: 110px;
+    }
+
+    .flower-petals span {
+        width: 22px;
+        height: 55px;
+        margin-left: -11px;
+    }
+
+    .photo-center {
+        width: 56px;
+        height: 56px;
+        border-width: 3px;
+    }
+
+    /* Reposicionamiento proporcional en celular */
+    .flower-1 { top: 90px; left: 2px; }
+    .flower-2 { top: 25px; left: 78px; }
+    .flower-3 { top: 25px; right: 78px; }
+    .flower-4 { top: 90px; right: 2px; }
 }
