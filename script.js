@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Generar pétalos cayendo suavemente al fondo
+    // 1. Generar pétalos amarillos flotando de fondo
     const petalsContainer = document.getElementById('petalsContainer');
-    const petalCount = 20;
+    const petalCount = 22;
 
     if (petalsContainer) {
         for (let i = 0; i < petalCount; i++) {
@@ -14,12 +14,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // 2. Efecto de aumento y leve resplandor al hacer clic o tocar cada flor
+    // 2. Efecto de destaque táctil/interactivo al hacer clic en cada flor
     const flowers = document.querySelectorAll('.sunflower');
 
     flowers.forEach(flower => {
         flower.addEventListener('click', () => {
-            flower.style.transform = 'scale(1.25)';
+            flower.style.transform = 'scale(1.22)';
             flower.style.zIndex = '20';
 
             setTimeout(() => {
